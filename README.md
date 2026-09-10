@@ -36,6 +36,7 @@ Uses `client.chats.create()` to open a chat session with Gemini, so conversation
 
 ### 3. Agent Demo (`agent.py`)
 A minimal illustration of the core idea behind tool-calling agents: given a user request, the agent decides *which* tool is relevant (a calculator or a weather lookup) and calls it, rather than trying to answer everything with static text. This version uses simple pattern matching to keep the demo dependency-free and runnable offline; the same routing logic is what an LLM does more flexibly via native function-calling / tool-use APIs.
+For safety, arithmetic expressions are evaluated using Python's `ast` module with a whitelist of allowed operators — not Python's built-in `eval()`, which would execute arbitrary code from user input.
 
 ## Setup
 
